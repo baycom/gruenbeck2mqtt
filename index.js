@@ -61,6 +61,7 @@ function getVariables(id) {
 		port: "80",
 		path: "/mux_http",
 		method: "POST",
+		timeout: 1000,
 		insecureHTTPParser: true,
 		headers: {
 			"Content-Type": "application/x-www-form-urlencoded",
