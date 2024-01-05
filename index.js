@@ -35,7 +35,7 @@ function sendMqtt(data) {
 	if(options.debug) {
 		console.log("sendMqtt: " + topic + " Data: " + jsonData);
 	}
-	MQTTclient.publish(topic, jsonData);
+	MQTTclient.publish(topic, jsonData, { retain: true });
 }
 
 var MQTTclient = mqtt.connect("mqtt://" + options.mqtthost, {
