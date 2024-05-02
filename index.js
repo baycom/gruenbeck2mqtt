@@ -61,7 +61,7 @@ function getVariables(id) {
 		port: "80",
 		path: "/mux_http",
 		method: "POST",
-		timeout: 1000,
+		timeout: 5000,
 		insecureHTTPParser: true,
 		headers: {
 			"Content-Type": "application/x-www-form-urlencoded",
@@ -110,6 +110,10 @@ function getVariables(id) {
 			console.log("Error: " + err.message);
 			setTimeout(timer, options.wait * 1000, id);
 		});
+	post_req.on('timeout', () => {
+		post_req.destroy();
+		setTimeout(timer, options.wait * 1000, id);
+	});
 	post_req.write(post_data);
 	post_req.end();
 }
